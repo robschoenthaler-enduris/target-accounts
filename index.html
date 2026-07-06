@@ -104,6 +104,7 @@
   <div class="inner-tab active" onclick="switchInner('accounts',this)">Accounts</div>
   <div class="inner-tab" onclick="switchInner('icp',this)">ICP Framework</div>
   <div class="inner-tab" onclick="switchInner('outreach',this)">Outreach Angles</div>
+  <div class="inner-tab" onclick="switchInner('summary',this)" style="color:#e63012;border-bottom:2px solid transparent">&#9654; Board Summary</div>
 </div>
 <div id="pane-accounts" class="content">
   <div class="filter-bar">
@@ -510,6 +511,211 @@ function applyFilter(filter,btn){
   renderAccounts();
 }
 
+
+function renderSummary() {
+  const INDUSTRY_ICONS_MAP = {
+    "Trailers":"🚛","Truck Bodies":"🚚","Motor Homes":"🏕️","Marine Craft":"⛵",
+    "Construction Equipment":"🟡","Mining Equipment":"⛏️","Farm Equipment":"🚜",
+    "Fire Trucks":"🚒","Cranes":"🏗️","Elevators & Escalators":"🛗",
+    "Street Sweepers":"🧹","Garbage Trucks":"🗑️","Military Vehicles":"🪖",
+    "Airport Equipment":"✈️","Tow Trucks & Recovery":"🚨"
+  };
+
+  const inds = Object.keys(INDUSTRIES);
+  const totalAccounts = inds.reduce((s,i) => s + INDUSTRIES[i].accounts.length, 0);
+  const totalT1 = inds.reduce((s,i) => s + INDUSTRIES[i].accounts.filter(a=>a.tier==='Tier 1').length, 0);
+  const totalOK = inds.reduce((s,i) => s + INDUSTRIES[i].accounts.filter(a=>a.okToTarget==='Yes').length, 0);
+  const totalWNC = inds.reduce((s,i) => s + INDUSTRIES[i].accounts.filter(a=>a.okToTarget==='No').length, 0);
+
+  // Segment totals
+  const segTotals = {OEM:0, Distributor:0, Dealer:0, Fleet:0};
+  inds.forEach(i => INDUSTRIES[i].accounts.forEach(a => { if(segTotals[a.segment]!==undefined) segTotals[a.segment]++; }));
+
+  // Build industry rows sorted by account count desc
+  const rows = inds.map(ind => {
+    const accs = INDUSTRIES[ind].accounts;
+    const t1 = accs.filter(a=>a.tier==='Tier 1').length;
+    const t2 = accs.filter(a=>a.tier==='Tier 2').length;
+    const t3 = accs.filter(a=>a.tier==='Tier 3').length;
+    const ok = accs.filter(a=>a.okToTarget==='Yes').length;
+    const wnc = accs.filter(a=>a.okToTarget==='No').length;
+    const oem = accs.filter(a=>a.segment==='OEM').length;
+    const dist = accs.filter(a=>a.segment==='Distributor').length;
+    const dealer = accs.filter(a=>a.segment==='Dealer').length;
+    const fleet = accs.filter(a=>a.segment==='Fleet').length;
+    return {ind, total:accs.length, t1, t2, t3, ok, wnc, oem, dist, dealer, fleet};
+  }).sort((a,b) => b.total - a.total);
+
+  const maxCount = Math.max(...rows.map(r => r.total));
+
+  document.getElementById('summary-content').innerHTML = `
+    <div style="max-width:1100px;margin:0 auto">
+
+      <!-- Header -->
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:28px">
+        <div>
+          <div style="font-size:11px;color:#e63012;text-transform:uppercase;letter-spacing:2px;font-weight:700;margin-bottom:6px">Target Account Universe</div>
+          <div style="font-size:28px;font-weight:800;color:#fff;line-height:1.1">Market Coverage Summary</div>
+          <div style="font-size:13px;color:#555;margin-top:6px">${inds.length} Industries &nbsp;·&nbsp; ${totalAccounts} Target Accounts &nbsp;·&nbsp; As of ${new Date().toLocaleDateString('en-US',{month:'long',year:'numeric'})}</div>
+        </div>
+        <div style="display:flex;gap:10px">
+          <div style="background:#141414;border:1px solid #1e1e1e;border-radius:8px;padding:14px 20px;text-align:center">
+            <div style="font-size:26px;font-weight:800;color:#e63012">${totalAccounts}</div>
+            <div style="font-size:9px;color:#666;text-transform:uppercase;letter-spacing:1px;margin-top:2px">Total Targets</div>
+          </div>
+          <div style="background:#141414;border:1px solid #1e1e1e;border-radius:8px;padding:14px 20px;text-align:center">
+            <div style="font-size:26px;font-weight:800;color:#e63012">${totalT1}</div>
+            <div style="font-size:9px;color:#666;text-transform:uppercase;letter-spacing:1px;margin-top:2px">Tier 1 Priority</div>
+          </div>
+          <div style="background:#141414;border:1px solid #1e1e1e;border-radius:8px;padding:14px 20px;text-align:center">
+            <div style="font-size:26px;font-weight:800;color:#22c55e">${totalOK}</div>
+            <div style="font-size:9px;color:#666;text-transform:uppercase;letter-spacing:1px;margin-top:2px">OK to Target</div>
+          </div>
+          <div style="background:#141414;border:1px solid #1e1e1e;border-radius:8px;padding:14px 20px;text-align:center">
+            <div style="font-size:26px;font-weight:800;color:#ef4444">${totalWNC}</div>
+            <div style="font-size:9px;color:#666;text-transform:uppercase;letter-spacing:1px;margin-top:2px">WNC Restricted</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Industry table -->
+      <div style="background:#141414;border:1px solid #1e1e1e;border-radius:10px;overflow:hidden;margin-bottom:24px">
+        <table style="width:100%;border-collapse:collapse;font-size:12px">
+          <thead>
+            <tr style="background:#111;border-bottom:1px solid #222">
+              <th style="text-align:left;padding:11px 16px;color:#555;font-size:9px;text-transform:uppercase;letter-spacing:1px;font-weight:600;width:22%">Industry</th>
+              <th style="padding:11px 12px;color:#555;font-size:9px;text-transform:uppercase;letter-spacing:1px;font-weight:600;width:22%">Coverage</th>
+              <th style="text-align:center;padding:11px 8px;color:#e63012;font-size:9px;text-transform:uppercase;letter-spacing:1px;font-weight:600">Total</th>
+              <th style="text-align:center;padding:11px 8px;color:#e63012;font-size:9px;text-transform:uppercase;letter-spacing:1px;font-weight:600">Tier 1</th>
+              <th style="text-align:center;padding:11px 8px;color:#f5a623;font-size:9px;text-transform:uppercase;letter-spacing:1px;font-weight:600">Tier 2</th>
+              <th style="text-align:center;padding:11px 8px;color:#4a9eff;font-size:9px;text-transform:uppercase;letter-spacing:1px;font-weight:600">Tier 3</th>
+              <th style="text-align:center;padding:11px 8px;color:#555;font-size:9px;text-transform:uppercase;letter-spacing:1px;font-weight:600">OEM</th>
+              <th style="text-align:center;padding:11px 8px;color:#555;font-size:9px;text-transform:uppercase;letter-spacing:1px;font-weight:600">Dist.</th>
+              <th style="text-align:center;padding:11px 8px;color:#a78bfa;font-size:9px;text-transform:uppercase;letter-spacing:1px;font-weight:600">Dealer</th>
+              <th style="text-align:center;padding:11px 8px;color:#555;font-size:9px;text-transform:uppercase;letter-spacing:1px;font-weight:600">Fleet</th>
+              <th style="text-align:center;padding:11px 8px;color:#22c55e;font-size:9px;text-transform:uppercase;letter-spacing:1px;font-weight:600">OK</th>
+              <th style="text-align:center;padding:11px 8px;color:#ef4444;font-size:9px;text-transform:uppercase;letter-spacing:1px;font-weight:600">WNC</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${rows.map((r,i) => `
+              <tr style="border-bottom:1px solid #1a1a1a;cursor:pointer" onclick="switchIndustry('${r.ind}');switchInner('accounts',document.querySelectorAll('.inner-tab')[0])" onmouseover="this.style.background='#1a1a1a'" onmouseout="this.style.background=''">
+                <td style="padding:11px 16px">
+                  <div style="display:flex;align-items:center;gap:8px">
+                    <span style="font-size:16px">${INDUSTRY_ICONS_MAP[r.ind]||'📋'}</span>
+                    <span style="color:#fff;font-weight:600">${r.ind}</span>
+                  </div>
+                </td>
+                <td style="padding:11px 12px">
+                  <div style="height:6px;background:#1e1e1e;border-radius:3px;overflow:hidden">
+                    <div style="height:100%;width:${Math.round((r.total/maxCount)*100)}%;background:linear-gradient(90deg,#e63012,#e6301299);border-radius:3px"></div>
+                  </div>
+                </td>
+                <td style="text-align:center;padding:11px 8px;color:#fff;font-weight:700;font-size:14px">${r.total}</td>
+                <td style="text-align:center;padding:11px 8px"><span style="color:#e63012;font-weight:700">${r.t1||'—'}</span></td>
+                <td style="text-align:center;padding:11px 8px"><span style="color:#f5a623">${r.t2||'—'}</span></td>
+                <td style="text-align:center;padding:11px 8px"><span style="color:#4a9eff">${r.t3||'—'}</span></td>
+                <td style="text-align:center;padding:11px 8px;color:#aaa">${r.oem||'—'}</td>
+                <td style="text-align:center;padding:11px 8px;color:#aaa">${r.dist||'—'}</td>
+                <td style="text-align:center;padding:11px 8px;color:#a78bfa">${r.dealer||'—'}</td>
+                <td style="text-align:center;padding:11px 8px;color:#aaa">${r.fleet||'—'}</td>
+                <td style="text-align:center;padding:11px 8px;color:#22c55e;font-weight:600">${r.ok}</td>
+                <td style="text-align:center;padding:11px 8px;color:#ef4444">${r.wnc||'—'}</td>
+              </tr>
+            `).join('')}
+          </tbody>
+          <tfoot>
+            <tr style="background:#111;border-top:2px solid #333">
+              <td style="padding:11px 16px;color:#888;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px">TOTAL</td>
+              <td></td>
+              <td style="text-align:center;padding:11px 8px;color:#e63012;font-weight:800;font-size:15px">${totalAccounts}</td>
+              <td style="text-align:center;padding:11px 8px;color:#e63012;font-weight:700">${totalT1}</td>
+              <td style="text-align:center;padding:11px 8px;color:#f5a623;font-weight:700">${rows.reduce((s,r)=>s+r.t2,0)}</td>
+              <td style="text-align:center;padding:11px 8px;color:#4a9eff;font-weight:700">${rows.reduce((s,r)=>s+r.t3,0)}</td>
+              <td style="text-align:center;padding:11px 8px;color:#aaa;font-weight:700">${segTotals.OEM}</td>
+              <td style="text-align:center;padding:11px 8px;color:#aaa;font-weight:700">${segTotals.Distributor}</td>
+              <td style="text-align:center;padding:11px 8px;color:#a78bfa;font-weight:700">${segTotals.Dealer}</td>
+              <td style="text-align:center;padding:11px 8px;color:#aaa;font-weight:700">${segTotals.Fleet}</td>
+              <td style="text-align:center;padding:11px 8px;color:#22c55e;font-weight:700">${totalOK}</td>
+              <td style="text-align:center;padding:11px 8px;color:#ef4444;font-weight:700">${totalWNC}</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <!-- Segment + Tier breakdown cards -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px">
+
+        <!-- By Segment -->
+        <div style="background:#141414;border:1px solid #1e1e1e;border-radius:10px;padding:20px">
+          <div style="font-size:10px;color:#e63012;text-transform:uppercase;letter-spacing:2px;font-weight:700;margin-bottom:16px">By Segment</div>
+          ${[
+            {label:'OEM', val:segTotals.OEM, color:'#e63012', desc:'Original Equipment Manufacturers'},
+            {label:'Fleet', val:segTotals.Fleet, color:'#4a9eff', desc:'Fleet Operators & End Users'},
+            {label:'Distributor', val:segTotals.Distributor, color:'#f5a623', desc:'Independent Parts Distributors'},
+            {label:'Dealer', val:segTotals.Dealer, color:'#a78bfa', desc:'OEM-Authorized Dealer Networks'},
+          ].map(s => `
+            <div style="margin-bottom:12px">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+                <div>
+                  <span style="color:${s.color};font-weight:700;font-size:12px">${s.label}</span>
+                  <span style="color:#555;font-size:10px;margin-left:8px">${s.desc}</span>
+                </div>
+                <span style="color:#fff;font-weight:700;font-size:13px">${s.val}</span>
+              </div>
+              <div style="height:5px;background:#1e1e1e;border-radius:3px;overflow:hidden">
+                <div style="height:100%;width:${Math.round((s.val/totalAccounts)*100)}%;background:${s.color};border-radius:3px;opacity:0.8"></div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+
+        <!-- By Tier -->
+        <div style="background:#141414;border:1px solid #1e1e1e;border-radius:10px;padding:20px">
+          <div style="font-size:10px;color:#e63012;text-transform:uppercase;letter-spacing:2px;font-weight:700;margin-bottom:16px">By Priority Tier</div>
+          ${[
+            {label:'Tier 1 — Priority', val:totalT1, color:'#e63012', desc:'Immediate outreach targets'},
+            {label:'Tier 2 — High Potential', val:rows.reduce((s,r)=>s+r.t2,0), color:'#f5a623', desc:'Active pipeline development'},
+            {label:'Tier 3 — Future Pipeline', val:rows.reduce((s,r)=>s+r.t3,0), color:'#4a9eff', desc:'Long-term relationship building'},
+          ].map(t => `
+            <div style="margin-bottom:14px">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+                <div>
+                  <span style="color:${t.color};font-weight:700;font-size:12px">${t.label}</span>
+                  <span style="color:#555;font-size:10px;margin-left:8px">${t.desc}</span>
+                </div>
+                <span style="color:#fff;font-weight:700;font-size:13px">${t.val}</span>
+              </div>
+              <div style="height:5px;background:#1e1e1e;border-radius:3px;overflow:hidden">
+                <div style="height:100%;width:${Math.round((t.val/totalAccounts)*100)}%;background:${t.color};border-radius:3px;opacity:0.8"></div>
+              </div>
+            </div>
+          `).join('')}
+          <div style="margin-top:20px;padding-top:16px;border-top:1px solid #1e1e1e">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <div>
+                <span style="color:#22c55e;font-weight:700;font-size:12px">✓ OK to Target Now</span>
+                <span style="color:#555;font-size:10px;margin-left:8px">No WNC conflict</span>
+              </div>
+              <span style="color:#22c55e;font-weight:700;font-size:13px">${totalOK}</span>
+            </div>
+            <div style="height:5px;background:#1e1e1e;border-radius:3px;overflow:hidden;margin-top:4px">
+              <div style="height:100%;width:${Math.round((totalOK/totalAccounts)*100)}%;background:#22c55e;border-radius:3px;opacity:0.8"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Footer note -->
+      <div style="text-align:center;font-size:10px;color:#333;padding-bottom:8px">
+        Click any industry row to navigate to its full account list &nbsp;·&nbsp; enduris.com
+      </div>
+
+    </div>
+  `;
+}
+
 function switchInner(tab,el){
   currentInner=tab;
   document.querySelectorAll('.inner-tab').forEach(t=>t.classList.remove('active'));
@@ -526,5 +732,9 @@ buildIndustryNav();
 renderAccounts();
 updateStats(INDUSTRIES[currentIndustry].accounts);
 </script>
+
+<div id="pane-summary" class="content hidden">
+  <div id="summary-content"></div>
+</div>
 </body>
 </html>
