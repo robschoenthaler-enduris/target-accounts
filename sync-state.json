@@ -1,0 +1,245 @@
+{
+  "schema": "enduris-sales-nav-sync/1",
+  "last_updated": "2026-08-25",
+  "source_of_truth": "https://robschoenthaler-enduris.github.io/target-accounts/  (window.INDUSTRIES in the inline <script>)",
+  "source_counts": {
+    "unique_accounts": 555,
+    "tier_1": 190,
+    "tier_2": 244,
+    "tier_3": 121
+  },
+  "sales_navigator": {
+    "account_lists_url": "https://www.linkedin.com/sales/lists/company",
+    "list_dashboard_url_pattern": "https://www.linkedin.com/sales/accounts/dashboard?listGroup=CUSTOM_LISTS&listId={listId}&page={n}",
+    "lists": {
+      "Enduris Tier 1": {
+        "listId": "7493042649138974720",
+        "count_as_of_2026_08_25": 194,
+        "status": "complete"
+      },
+      "Enduris Tier 2": {
+        "listId": "7493690132194066433",
+        "count_as_of_2026_08_25": 242,
+        "status": "complete"
+      },
+      "Enduris Tier 3": {
+        "listId": "7493690172379930624",
+        "count_as_of_2026_08_25": 0,
+        "status": "NOT STARTED"
+      }
+    }
+  },
+  "added_2026_08_25": {
+    "tier_1": [
+      "Morgan Olson",
+      "Otis Elevator Co.",
+      "Demers Ambulances",
+      "Los Angeles County Fire Department",
+      "Herc Rentals",
+      "Rio Tinto",
+      "BHP",
+      "Freeport-McMoRan",
+      "Newmont Corporation",
+      "Barrick Mining Corporation",
+      "Metropolitan Transportation Authority",
+      "Washington Metropolitan Area Transit Authority (WMATA)",
+      "Toronto Transit Commission (TTC)",
+      "US Army",
+      "U.S. Army TACOM",
+      "United States Marine Corps",
+      "Armed Forces of Ukraine",
+      "Ministry of Defence of Ukraine",
+      "Worldwide Flight Services",
+      "Menzies Aviation",
+      "Copart",
+      "IAA"
+    ],
+    "tier_2": [
+      "Doonan Specialized Trailer, LLC",
+      "Masterack",
+      "Braun Ambulances",
+      "Medix Specialty Vehicles, Inc.",
+      "Allstate",
+      "BOMA International",
+      "American Automobile Association (AAA)"
+    ]
+  },
+  "not_added_no_linkedin_match": [
+    {
+      "name": "HONK Technologies",
+      "tier": "Tier 1",
+      "note": "no Sales Navigator page; acquired - Agero already in Tier 1"
+    },
+    {
+      "name": "Marine Products Corporation",
+      "tier": "Tier 2",
+      "note": "no page; operating brand Chaparral Boats Inc already in Tier 2"
+    },
+    {
+      "name": "Elevator Products Corporation (EPCO)",
+      "tier": "Tier 2",
+      "note": "no search results"
+    },
+    {
+      "name": "AutoReturn",
+      "tier": "Tier 2",
+      "note": "no search results"
+    }
+  ],
+  "resolved_as_duplicates": [
+    {
+      "source_name": "Carrier Global Corporation",
+      "tier": "Tier 1",
+      "maps_to": "Carrier HVAC (already saved)"
+    },
+    {
+      "source_name": "Yamaha Marine",
+      "tier": "Tier 1",
+      "maps_to": "Yamaha Motor Corporation, USA (already saved)"
+    },
+    {
+      "source_name": "Los Angeles Fire Department (LAFD)",
+      "tier": "Tier 1",
+      "maps_to": "Los Angeles County Fire Department - LAFD city agency has no Sales Navigator page"
+    },
+    {
+      "source_name": "Major shopping mall operators (Simon Property Group, etc.)",
+      "tier": "Tier 2",
+      "maps_to": "Simon Property Group (already saved)"
+    }
+  ],
+  "remaining_work": {
+    "tier_3": {
+      "count": 121,
+      "accounts": [
+        "East Manufacturing",
+        "Manac Inc.",
+        "Old Dominion Freight Line",
+        "XL Specialized Trailers",
+        "Tremcar Inc.",
+        "Reitnouer Trailers",
+        "Doepker Industries Ltd.",
+        "Transport Enterprise Leasing (TEL)",
+        "Kentucky Trailer (Kentucky Manufacturing Co.)",
+        "Scelzi Enterprises, Inc.",
+        "Godwin Manufacturing (Galion Godwin Truck Body Co.)",
+        "Warner Bodies, Inc.",
+        "Rugby Manufacturing",
+        "KOA (Kampgrounds of America)",
+        "National Indoor RV Centers (NIRVC)",
+        "La Mesa RV",
+        "El Monte RV",
+        "Newmar Corporation",
+        "Foretravel, Inc.",
+        "Marathon Coach, Inc.",
+        "Viking Yacht Company",
+        "Correct Craft (Nautique Boat Company)",
+        "Twin Disc, Inc.",
+        "Ferretti Group",
+        "Azimut|Benetti Group",
+        "Marine Parts Express",
+        "Kobelco Construction Machinery",
+        "HD Hyundai Construction Equipment",
+        "Astec Industries",
+        "XCMG (Xuzhou Construction Machinery Group)",
+        "SANY Group",
+        "LiuGong",
+        "Vince Hagan Company",
+        "LeeBoy (Fayat Group, acquired 2025)",
+        "NPK Construction Equipment, Inc.",
+        "Screen Machine Industries",
+        "Coeur Mining",
+        "Hecla Mining Company",
+        "JCB Agriculture (Fastrac)",
+        "Yanmar America Corporation",
+        "Argo Tractors (McCormick brand)",
+        "Salford Group Inc. (a Linamar company)",
+        "Bourgault Industries Ltd.",
+        "Worthington Ag Parts",
+        "All States Ag Parts",
+        "J.G. Boswell Company",
+        "Tejon Ranch Co.",
+        "A. Duda & Sons (Duda Farm Fresh Foods)",
+        "Toyne, Inc.",
+        "HME Ahrens-Fox",
+        "Marion Body Works",
+        "4 Guys Fire Trucks",
+        "Boise Mobile Equipment (BME Fire Trucks)",
+        "Alexis Fire Equipment Company",
+        "Danko Emergency Equipment",
+        "Command Fire Apparatus",
+        "HGACBuy (Houston-Galveston Area Council)",
+        "Zoomlion",
+        "Broderson Manufacturing Corp.",
+        "Elliott Equipment Company",
+        "Iowa Mold Tooling Co., Inc. (IMT, an Oshkosh Corp. company)",
+        "Empire Crane Company",
+        "Cropac Equipment Inc.",
+        "Deep South Crane & Rigging",
+        "Buckner HeavyLift Cranes",
+        "Toshiba Elevator and Building Systems Corporation",
+        "Orona Group (Orona S. Coop.)",
+        "Adams Elevator Equipment Company",
+        "CED Elevator & Electrical",
+        "Janus Elevator Products, Inc.",
+        "SL Green Realty Corp.",
+        "Gradall Industries, LLC (Vacall)",
+        "NiteHawk Sweepers",
+        "Stewart-Amos Sweeper Co.",
+        "Howa Machinery, Ltd.",
+        "Clean Harbors, Inc.",
+        "Denel Land Systems",
+        "INKAS Armored Vehicle Manufacturing",
+        "Federal Military Parts",
+        "Midwest Military",
+        "Grand Industries, Inc.",
+        "Navistar Defense LLC",
+        "Vestergaard Company",
+        "Trepel Airport Equipment",
+        "Mulag Fahrzeugwerk",
+        "Charlatte Manutention",
+        "Kalmar Motor AB",
+        "NMC-Wollard",
+        "Stinar Corporation",
+        "Tug Technologies Corporation",
+        "Lektro Inc",
+        "B/A Products Co.",
+        "Zacklift International",
+        "TEC Equipment",
+        "McMahon Truck Centers",
+        "Allegiance Truck Centers",
+        "TLC Truck & Equipment",
+        "B&B Industries",
+        "Falls Way Equipment",
+        "CIRCOR International (now private, KKR-owned)",
+        "Graham Corporation",
+        "World Petroleum Supply",
+        "American Oil Tools",
+        "Southwest Oilfield Products",
+        "DXP Pacific (DXP Enterprises authorized NOV rig-systems channel)",
+        "Tencarva Machinery Company",
+        "Global Compression Services",
+        "Air Centers of Florida",
+        "EVAPCO, Inc.",
+        "Modine Manufacturing Company",
+        "ACCO Engineered Systems",
+        "Baker Distributing Company",
+        "Gemaire Distributors",
+        "Mingledorff's, Inc.",
+        "Western Allied Mechanical, Inc.",
+        "CBRE Group, Inc.",
+        "Doosan / HD Hyundai Infracore (industrial genset engines)",
+        "General Power Limited (GenPowerUSA)",
+        "Depco Power Systems",
+        "Curtis Power Solutions",
+        "Carolina Energy Systems"
+      ]
+    }
+  },
+  "method_notes": [
+    "Sales Nav list pages are virtualised: JS returns 0 rows unless the tab has been painted. Force a paint with a tiny screenshot/zoom before running DOM reads.",
+    "List membership: page through &page=N (25/page), collect a[data-anonymize=\"company-name\"] while scrolling. The 4-5 'Accounts with recent changes' cards use the same selector - subtract them.",
+    "To add: /sales/search/company?query=(spellCorrectionEnabled:true,keywords:NAME), then in the result row click the button whose aria-label matches /as an account|saved\\. Add to a custom list/, wait ~1.5s, then click the button whose aria-label matches /to <List Name> list/.",
+    "An account already saved to another list shows 'Saved' instead of 'Save' - same dropdown, different aria-label."
+  ]
+}
