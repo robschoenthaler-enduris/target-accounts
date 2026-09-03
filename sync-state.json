@@ -1,245 +1,193 @@
 {
-  "schema": "enduris-sales-nav-sync/1",
-  "last_updated": "2026-08-25",
-  "source_of_truth": "https://robschoenthaler-enduris.github.io/target-accounts/  (window.INDUSTRIES in the inline <script>)",
-  "source_counts": {
-    "unique_accounts": 555,
-    "tier_1": 190,
-    "tier_2": 244,
-    "tier_3": 121
-  },
-  "sales_navigator": {
-    "account_lists_url": "https://www.linkedin.com/sales/lists/company",
-    "list_dashboard_url_pattern": "https://www.linkedin.com/sales/accounts/dashboard?listGroup=CUSTOM_LISTS&listId={listId}&page={n}",
-    "lists": {
-      "Enduris Tier 1": {
-        "listId": "7493042649138974720",
-        "count_as_of_2026_08_25": 194,
-        "status": "complete"
-      },
-      "Enduris Tier 2": {
-        "listId": "7493690132194066433",
-        "count_as_of_2026_08_25": 242,
-        "status": "complete"
-      },
-      "Enduris Tier 3": {
-        "listId": "7493690172379930624",
-        "count_as_of_2026_08_25": 0,
-        "status": "NOT STARTED"
-      }
-    }
-  },
-  "added_2026_08_25": {
-    "tier_1": [
-      "Morgan Olson",
-      "Otis Elevator Co.",
-      "Demers Ambulances",
-      "Los Angeles County Fire Department",
-      "Herc Rentals",
-      "Rio Tinto",
-      "BHP",
-      "Freeport-McMoRan",
-      "Newmont Corporation",
-      "Barrick Mining Corporation",
-      "Metropolitan Transportation Authority",
-      "Washington Metropolitan Area Transit Authority (WMATA)",
-      "Toronto Transit Commission (TTC)",
-      "US Army",
-      "U.S. Army TACOM",
-      "United States Marine Corps",
-      "Armed Forces of Ukraine",
-      "Ministry of Defence of Ukraine",
-      "Worldwide Flight Services",
-      "Menzies Aviation",
-      "Copart",
-      "IAA"
-    ],
-    "tier_2": [
-      "Doonan Specialized Trailer, LLC",
-      "Masterack",
-      "Braun Ambulances",
-      "Medix Specialty Vehicles, Inc.",
-      "Allstate",
-      "BOMA International",
-      "American Automobile Association (AAA)"
-    ]
-  },
-  "not_added_no_linkedin_match": [
-    {
-      "name": "HONK Technologies",
-      "tier": "Tier 1",
-      "note": "no Sales Navigator page; acquired - Agero already in Tier 1"
-    },
-    {
-      "name": "Marine Products Corporation",
-      "tier": "Tier 2",
-      "note": "no page; operating brand Chaparral Boats Inc already in Tier 2"
-    },
-    {
-      "name": "Elevator Products Corporation (EPCO)",
-      "tier": "Tier 2",
-      "note": "no search results"
-    },
-    {
-      "name": "AutoReturn",
-      "tier": "Tier 2",
-      "note": "no search results"
-    }
-  ],
-  "resolved_as_duplicates": [
-    {
-      "source_name": "Carrier Global Corporation",
-      "tier": "Tier 1",
-      "maps_to": "Carrier HVAC (already saved)"
-    },
-    {
-      "source_name": "Yamaha Marine",
-      "tier": "Tier 1",
-      "maps_to": "Yamaha Motor Corporation, USA (already saved)"
-    },
-    {
-      "source_name": "Los Angeles Fire Department (LAFD)",
-      "tier": "Tier 1",
-      "maps_to": "Los Angeles County Fire Department - LAFD city agency has no Sales Navigator page"
-    },
-    {
-      "source_name": "Major shopping mall operators (Simon Property Group, etc.)",
-      "tier": "Tier 2",
-      "maps_to": "Simon Property Group (already saved)"
-    }
-  ],
-  "remaining_work": {
-    "tier_3": {
-      "count": 121,
-      "accounts": [
-        "East Manufacturing",
-        "Manac Inc.",
-        "Old Dominion Freight Line",
-        "XL Specialized Trailers",
-        "Tremcar Inc.",
-        "Reitnouer Trailers",
-        "Doepker Industries Ltd.",
-        "Transport Enterprise Leasing (TEL)",
-        "Kentucky Trailer (Kentucky Manufacturing Co.)",
-        "Scelzi Enterprises, Inc.",
-        "Godwin Manufacturing (Galion Godwin Truck Body Co.)",
-        "Warner Bodies, Inc.",
-        "Rugby Manufacturing",
-        "KOA (Kampgrounds of America)",
-        "National Indoor RV Centers (NIRVC)",
-        "La Mesa RV",
-        "El Monte RV",
-        "Newmar Corporation",
-        "Foretravel, Inc.",
-        "Marathon Coach, Inc.",
-        "Viking Yacht Company",
-        "Correct Craft (Nautique Boat Company)",
-        "Twin Disc, Inc.",
-        "Ferretti Group",
-        "Azimut|Benetti Group",
-        "Marine Parts Express",
-        "Kobelco Construction Machinery",
-        "HD Hyundai Construction Equipment",
-        "Astec Industries",
-        "XCMG (Xuzhou Construction Machinery Group)",
-        "SANY Group",
-        "LiuGong",
-        "Vince Hagan Company",
-        "LeeBoy (Fayat Group, acquired 2025)",
-        "NPK Construction Equipment, Inc.",
-        "Screen Machine Industries",
-        "Coeur Mining",
-        "Hecla Mining Company",
-        "JCB Agriculture (Fastrac)",
-        "Yanmar America Corporation",
-        "Argo Tractors (McCormick brand)",
-        "Salford Group Inc. (a Linamar company)",
-        "Bourgault Industries Ltd.",
-        "Worthington Ag Parts",
-        "All States Ag Parts",
-        "J.G. Boswell Company",
-        "Tejon Ranch Co.",
-        "A. Duda & Sons (Duda Farm Fresh Foods)",
-        "Toyne, Inc.",
-        "HME Ahrens-Fox",
-        "Marion Body Works",
-        "4 Guys Fire Trucks",
-        "Boise Mobile Equipment (BME Fire Trucks)",
-        "Alexis Fire Equipment Company",
-        "Danko Emergency Equipment",
-        "Command Fire Apparatus",
-        "HGACBuy (Houston-Galveston Area Council)",
-        "Zoomlion",
-        "Broderson Manufacturing Corp.",
-        "Elliott Equipment Company",
-        "Iowa Mold Tooling Co., Inc. (IMT, an Oshkosh Corp. company)",
-        "Empire Crane Company",
-        "Cropac Equipment Inc.",
-        "Deep South Crane & Rigging",
-        "Buckner HeavyLift Cranes",
-        "Toshiba Elevator and Building Systems Corporation",
-        "Orona Group (Orona S. Coop.)",
-        "Adams Elevator Equipment Company",
-        "CED Elevator & Electrical",
-        "Janus Elevator Products, Inc.",
-        "SL Green Realty Corp.",
-        "Gradall Industries, LLC (Vacall)",
-        "NiteHawk Sweepers",
-        "Stewart-Amos Sweeper Co.",
-        "Howa Machinery, Ltd.",
-        "Clean Harbors, Inc.",
-        "Denel Land Systems",
-        "INKAS Armored Vehicle Manufacturing",
-        "Federal Military Parts",
-        "Midwest Military",
-        "Grand Industries, Inc.",
-        "Navistar Defense LLC",
-        "Vestergaard Company",
-        "Trepel Airport Equipment",
-        "Mulag Fahrzeugwerk",
-        "Charlatte Manutention",
-        "Kalmar Motor AB",
-        "NMC-Wollard",
-        "Stinar Corporation",
-        "Tug Technologies Corporation",
-        "Lektro Inc",
-        "B/A Products Co.",
-        "Zacklift International",
-        "TEC Equipment",
-        "McMahon Truck Centers",
-        "Allegiance Truck Centers",
-        "TLC Truck & Equipment",
-        "B&B Industries",
-        "Falls Way Equipment",
-        "CIRCOR International (now private, KKR-owned)",
-        "Graham Corporation",
-        "World Petroleum Supply",
-        "American Oil Tools",
-        "Southwest Oilfield Products",
-        "DXP Pacific (DXP Enterprises authorized NOV rig-systems channel)",
-        "Tencarva Machinery Company",
-        "Global Compression Services",
-        "Air Centers of Florida",
-        "EVAPCO, Inc.",
-        "Modine Manufacturing Company",
-        "ACCO Engineered Systems",
-        "Baker Distributing Company",
-        "Gemaire Distributors",
-        "Mingledorff's, Inc.",
-        "Western Allied Mechanical, Inc.",
-        "CBRE Group, Inc.",
-        "Doosan / HD Hyundai Infracore (industrial genset engines)",
-        "General Power Limited (GenPowerUSA)",
-        "Depco Power Systems",
-        "Curtis Power Solutions",
-        "Carolina Energy Systems"
-      ]
-    }
-  },
-  "method_notes": [
-    "Sales Nav list pages are virtualised: JS returns 0 rows unless the tab has been painted. Force a paint with a tiny screenshot/zoom before running DOM reads.",
-    "List membership: page through &page=N (25/page), collect a[data-anonymize=\"company-name\"] while scrolling. The 4-5 'Accounts with recent changes' cards use the same selector - subtract them.",
-    "To add: /sales/search/company?query=(spellCorrectionEnabled:true,keywords:NAME), then in the result row click the button whose aria-label matches /as an account|saved\\. Add to a custom list/, wait ~1.5s, then click the button whose aria-label matches /to <List Name> list/.",
-    "An account already saved to another list shows 'Saved' instead of 'Save' - same dropdown, different aria-label."
-  ]
+"schema": "enduris-sales-nav-sync/1",
+"last_updated": "2026-09-02",
+"source_of_truth": "https://robschoenthaler-enduris.github.io/target-accounts/ (window.INDUSTRIES in the inline <script>)",
+"source_counts": {
+"unique_accounts": 555,
+"tier_1": 190,
+"tier_2": 244,
+"tier_3": 121
+},
+"sales_navigator": {
+"account_lists_url": "https://www.linkedin.com/sales/lists/company",
+"list_dashboard_url_pattern": "https://www.linkedin.com/sales/accounts/dashboard?listGroup=CUSTOM_LISTS&listId={listId}&page={n}",
+"lists": {
+"Enduris Tier 1": {
+"listId": "7493042649138974720",
+"count_as_of_2026_09_02": 194,
+"status": "complete"
+},
+"Enduris Tier 2": {
+"listId": "7493690132194066433",
+"count_as_of_2026_09_02": 242,
+"status": "complete"
+},
+"Enduris Tier 3": {
+"listId": "7493690172379930624",
+"count_as_of_2026_09_02": 115,
+"status": "reconciled 2026-09-02 - see reconciled_2026_09_02 below. 114 of 121 catalog names live (111 already-live matches + 3 added this session), 5 have no LinkedIn page, 1 flagged for review."
+}
+}
+},
+"added_2026_08_25": {
+"tier_1": [
+"Morgan Olson",
+"Otis Elevator Co.",
+"Demers Ambulances",
+"Los Angeles County Fire Department",
+"Herc Rentals",
+"Rio Tinto",
+"BHP",
+"Freeport-McMoRan",
+"Newmont Corporation",
+"Barrick Mining Corporation",
+"Metropolitan Transportation Authority",
+"Washington Metropolitan Area Transit Authority (WMATA)",
+"Toronto Transit Commission (TTC)",
+"US Army",
+"U.S. Army TACOM",
+"United States Marine Corps",
+"Armed Forces of Ukraine",
+"Ministry of Defence of Ukraine",
+"Worldwide Flight Services",
+"Menzies Aviation",
+"Copart",
+"IAA"
+],
+"tier_2": [
+"Doonan Specialized Trailer, LLC",
+"Masterack",
+"Braun Ambulances",
+"Medix Specialty Vehicles, Inc.",
+"Allstate",
+"BOMA International",
+"American Automobile Association (AAA)"
+]
+},
+"added_2026_09_02": {
+"tier_3": [
+{
+"catalog_name": "Trail Boss Trailers (Trailboss Trailers, Inc.)",
+"linkedin_name_used": "Trail Boss Trailers",
+"note": "ad hoc add, not part of the original 122-name research list - spotted by Rob while driving; HubSpot Company record id 343573300942 created same day"
+},
+{
+"catalog_name": "JCB Agriculture (Fastrac)",
+"linkedin_name_used": "JCB",
+"note": "cross-tier add - added Enduris Tier 3 chip to the existing 'JCB' record (already saved to Enduris Tier 2), rather than creating a separate record. Confirmed via the resulting '2 Lists' badge."
+},
+{
+"catalog_name": "Lektro Inc",
+"linkedin_name_used": "Oshkosh AeroTech",
+"note": "cross-tier add - LEKTRO confirmed as an Oshkosh AeroTech brand via the company's About text; added Enduris Tier 3 chip to the existing 'Oshkosh AeroTech' record (already saved to Enduris Tier 1) rather than creating a separate record."
+},
+{
+"catalog_name": "Doosan / HD Hyundai Infracore (industrial genset engines)",
+"linkedin_name_used": "Doosan Infracore International",
+"note": "HD Hyundai Infracore itself has no dedicated Sales Navigator page - it appears only as a subsidiary reference inside HD Hyundai XiteSolution's About text. 'Doosan Infracore International' (388 employees on LinkedIn, the pre-rename global entity) is a real, substantial, dedicated page and was used as the match instead."
+}
+]
+},
+"not_added_no_linkedin_match": [
+{
+"name": "HONK Technologies",
+"tier": "Tier 1",
+"note": "no Sales Navigator page; acquired - Agero already in Tier 1"
+},
+{
+"name": "Marine Products Corporation",
+"tier": "Tier 2",
+"note": "no page; operating brand Chaparral Boats Inc already in Tier 2"
+},
+{
+"name": "Elevator Products Corporation (EPCO)",
+"tier": "Tier 2",
+"note": "no search results"
+},
+{
+"name": "AutoReturn",
+"tier": "Tier 2",
+"note": "no search results"
+},
+{
+"name": "East Manufacturing",
+"tier": "Tier 3",
+"note": "no matching LinkedIn Sales Navigator entity found (2026-09-02 reconciliation)"
+},
+{
+"name": "Transport Enterprise Leasing (TEL)",
+"tier": "Tier 3",
+"note": "no matching LinkedIn Sales Navigator entity found (2026-09-02 reconciliation)"
+},
+{
+"name": "Howa Machinery, Ltd.",
+"tier": "Tier 3",
+"note": "no matching LinkedIn Sales Navigator entity found (2026-09-02 reconciliation)"
+},
+{
+"name": "Federal Military Parts",
+"tier": "Tier 3",
+"note": "no matching LinkedIn Sales Navigator entity found (2026-09-02 reconciliation)"
+},
+{
+"name": "Falls Way Equipment",
+"tier": "Tier 3",
+"note": "no matching LinkedIn Sales Navigator entity found (2026-09-02 reconciliation)"
+}
+],
+"resolved_as_duplicates": [
+{
+"source_name": "Carrier Global Corporation",
+"tier": "Tier 1",
+"maps_to": "Carrier HVAC (already saved)"
+},
+{
+"source_name": "Yamaha Marine",
+"tier": "Tier 1",
+"maps_to": "Yamaha Motor Corporation, USA (already saved)"
+},
+{
+"source_name": "Los Angeles Fire Department (LAFD)",
+"tier": "Tier 1",
+"maps_to": "Los Angeles County Fire Department - LAFD city agency has no Sales Navigator page"
+},
+{
+"source_name": "Major shopping mall operators (Simon Property Group, etc.)",
+"tier": "Tier 2",
+"maps_to": "Simon Property Group (already saved)"
+}
+],
+"reconciled_2026_09_02": {
+"summary": "This file had Enduris Tier 3 recorded as NOT STARTED / 0 as of 2026-08-25, but the live Sales Navigator list actually already held 112 accounts (added via an earlier, undocumented session/method not reflected in this file). This entry corrects the record: the full live Tier 3 roster was pulled (112 accounts, 5-page scroll-and-collect per the method_notes recipe) and cross-referenced name-by-name against the 121-name Tier 3 catalog previously logged under remaining_work.tier_3.",
+"catalog_size": 121,
+"already_live_before_this_session": 112,
+"already_matched_to_catalog": 111,
+"correctly_excluded_cross_tier_dupes": [
+{"name": "XCMG (Xuzhou Construction Machinery Group)", "reason": "already cross-listed in Enduris Tier 2 - not double-added"},
+{"name": "SANY Group", "reason": "already cross-listed in Enduris Tier 2 - not double-added"}
+],
+"added_this_session": 3,
+"not_found_this_session": 5,
+"final_tier_3_count": 115,
+"flagged_for_review": [
+{
+"catalog_name": "Navistar Defense LLC",
+"live_match": "Navistar Defense U.K. Limited",
+"concern": "Catalog entry expects the US entity; the account actually saved under this name on the live list is titled as a UK subsidiary. Already counted among the 111 already-matched names, but worth Rob confirming this is the intended account rather than a mismatch."
+}
+]
+},
+"remaining_work": {
+"tier_3": {
+"count": 0,
+"accounts": [],
+"note": "Tier 3 catalog fully reconciled 2026-09-02 - see reconciled_2026_09_02 above. The 5 names with no LinkedIn page are listed in not_added_no_linkedin_match. No further batch work outstanding on the original 121-name catalog."
+}
+},
+"method_notes": [
+"Sales Nav list pages are virtualised: JS returns 0 rows unless the tab has been painted. Force a paint with a tiny screenshot/zoom before running DOM reads.",
+"List membership: page through &page=N (25/page), collect a[data-anonymize=\"company-name\"] while scrolling. The 4-5 'Accounts with recent changes' cards use the same selector - subtract them.",
+"To add: /sales/search/company?query=(spellCorrectionEnabled:true,keywords:NAME), then in the result row click the button whose aria-label matches /as an account|saved\\. Add to a custom list/, wait ~1.5s, then click the button whose aria-label matches /to <List Name> list/.",
+"An account already saved to another list shows 'Saved' instead of 'Save' - same dropdown, different aria-label."
+]
 }
