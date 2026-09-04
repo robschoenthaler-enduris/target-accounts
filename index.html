@@ -386,7 +386,6 @@ function renderSummary() {
   html+=sc(totalAccounts,'Total Targets','#e63012');
   html+=sc(totalT1,'Tier 1 Priority','#e63012');
   html+=sc(totalOK,'OK to Target','#22c55e');
-  html+=sc(totalWNC,'WNC Restricted','#ef4444');
   html+='</div></div>';
   html+='<div style="background:#141414;border:1px solid #1e1e1e;border-radius:10px;overflow:hidden;margin-bottom:20px">';
   html+='<table style="width:100%;border-collapse:collapse;font-size:12px">';
@@ -402,7 +401,6 @@ function renderSummary() {
   html+='<th style="text-align:center;padding:10px 8px;color:#a78bfa;font-size:9px;text-transform:uppercase;letter-spacing:1px;font-weight:600">Dealer</th>';
   html+='<th style="text-align:center;padding:10px 8px;color:#888;font-size:9px;text-transform:uppercase;letter-spacing:1px;font-weight:600">Fleet</th>';
   html+='<th style="text-align:center;padding:10px 8px;color:#22c55e;font-size:9px;text-transform:uppercase;letter-spacing:1px;font-weight:600">OK</th>';
-  html+='<th style="text-align:center;padding:10px 8px;color:#ef4444;font-size:9px;text-transform:uppercase;letter-spacing:1px;font-weight:600">WNC</th>';
   html+='</tr></thead><tbody>';
   rows.forEach(function(r){
     var pct=Math.round((r.total/maxCount)*100);
@@ -418,7 +416,6 @@ function renderSummary() {
     html+='<td style="text-align:center;padding:10px 8px;color:#a78bfa">'+(r.dealer||'&mdash;')+'</td>';
     html+='<td style="text-align:center;padding:10px 8px;color:#aaa">'+(r.fleet||'&mdash;')+'</td>';
     html+='<td style="text-align:center;padding:10px 8px;color:#22c55e;font-weight:600">'+r.ok+'</td>';
-    html+='<td style="text-align:center;padding:10px 8px;color:#ef4444">'+(r.wnc||'&mdash;')+'</td>';
     html+='</tr>';
   });
   html+='</tbody><tfoot><tr style="background:#111;border-top:2px solid #2a2a2a">';
@@ -432,7 +429,6 @@ function renderSummary() {
   html+='<td style="text-align:center;padding:10px 8px;color:#a78bfa;font-weight:700">'+segDealer+'</td>';
   html+='<td style="text-align:center;padding:10px 8px;color:#aaa;font-weight:700">'+segFleet+'</td>';
   html+='<td style="text-align:center;padding:10px 8px;color:#22c55e;font-weight:700">'+totalOK+'</td>';
-  html+='<td style="text-align:center;padding:10px 8px;color:#ef4444;font-weight:700">'+totalWNC+'</td>';
   html+='</tr></tfoot></table></div>';
   html+='<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">';
   function bcard(title,items,tot){
