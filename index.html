@@ -385,7 +385,6 @@ function renderSummary() {
   function sc(v,l,c){return '<div style="background:#141414;border:1px solid #1e1e1e;border-radius:8px;padding:12px 18px;text-align:center;min-width:90px"><div style="font-size:24px;font-weight:800;color:'+c+'">'+v+'</div><div style="font-size:9px;color:#666;text-transform:uppercase;letter-spacing:1px;margin-top:2px">'+l+'</div></div>';}
   html+=sc(totalAccounts,'Total Targets','#e63012');
   html+=sc(totalT1,'Tier 1 Priority','#e63012');
-  html+=sc(totalOK,'OK to Target','#22c55e');
   html+='</div></div>';
   html+='<div style="background:#141414;border:1px solid #1e1e1e;border-radius:10px;overflow:hidden;margin-bottom:20px">';
   html+='<table style="width:100%;border-collapse:collapse;font-size:12px">';
@@ -400,7 +399,6 @@ function renderSummary() {
   html+='<th style="text-align:center;padding:10px 8px;color:#888;font-size:9px;text-transform:uppercase;letter-spacing:1px;font-weight:600">Dist.</th>';
   html+='<th style="text-align:center;padding:10px 8px;color:#a78bfa;font-size:9px;text-transform:uppercase;letter-spacing:1px;font-weight:600">Dealer</th>';
   html+='<th style="text-align:center;padding:10px 8px;color:#888;font-size:9px;text-transform:uppercase;letter-spacing:1px;font-weight:600">Fleet</th>';
-  html+='<th style="text-align:center;padding:10px 8px;color:#22c55e;font-size:9px;text-transform:uppercase;letter-spacing:1px;font-weight:600">OK</th>';
   html+='</tr></thead><tbody>';
   rows.forEach(function(r){
     var pct=Math.round((r.total/maxCount)*100);
@@ -415,7 +413,6 @@ function renderSummary() {
     html+='<td style="text-align:center;padding:10px 8px;color:#aaa">'+(r.dist||'&mdash;')+'</td>';
     html+='<td style="text-align:center;padding:10px 8px;color:#a78bfa">'+(r.dealer||'&mdash;')+'</td>';
     html+='<td style="text-align:center;padding:10px 8px;color:#aaa">'+(r.fleet||'&mdash;')+'</td>';
-    html+='<td style="text-align:center;padding:10px 8px;color:#22c55e;font-weight:600">'+r.ok+'</td>';
     html+='</tr>';
   });
   html+='</tbody><tfoot><tr style="background:#111;border-top:2px solid #2a2a2a">';
@@ -428,7 +425,6 @@ function renderSummary() {
   html+='<td style="text-align:center;padding:10px 8px;color:#aaa;font-weight:700">'+segDist+'</td>';
   html+='<td style="text-align:center;padding:10px 8px;color:#a78bfa;font-weight:700">'+segDealer+'</td>';
   html+='<td style="text-align:center;padding:10px 8px;color:#aaa;font-weight:700">'+segFleet+'</td>';
-  html+='<td style="text-align:center;padding:10px 8px;color:#22c55e;font-weight:700">'+totalOK+'</td>';
   html+='</tr></tfoot></table></div>';
   html+='<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">';
   function bcard(title,items,tot){
@@ -455,7 +451,6 @@ function renderSummary() {
     {label:'Tier 1 \u2014 Priority',val:totalT1,color:'#e63012',desc:'Immediate outreach targets'},
     {label:'Tier 2 \u2014 High Potential',val:totalT2,color:'#f5a623',desc:'Active pipeline development'},
     {label:'Tier 3 \u2014 Future Pipeline',val:totalT3,color:'#4a9eff',desc:'Long-term relationship building'},
-    {label:'\u2713 OK to Target Now',val:totalOK,color:'#22c55e',desc:'No WNC conflict'},
   ],totalAccounts);
   html+='</div><div style="text-align:center;font-size:10px;color:#2a2a2a;padding-bottom:8px">enduris.com</div></div>';
   document.getElementById('summary-content').innerHTML=html;
