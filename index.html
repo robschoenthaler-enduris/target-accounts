@@ -112,7 +112,7 @@
   <span class="search-count" id="search-count"></span>
   <span class="search-hint">Press <kbd>/</kbd> to search, <kbd>Esc</kbd> to clear</span>
 </div>
-<div class="summary-bar">
+<div class="summary-bar" id="summary-bar">
   <div class="stat"><div class="num" id="stat-total">—</div><div class="lbl">Total Accounts</div></div>
   <div class="stat"><div class="num" id="stat-ok">—</div><div class="lbl">OK to Target</div></div>
   <div class="stat"><div class="num" id="stat-restricted">—</div><div class="lbl">Restricted (WNC)</div></div>
@@ -256,6 +256,7 @@ function switchToSummary(){
   document.getElementById('pane-icp').classList.add('hidden');
   document.getElementById('pane-outreach').classList.add('hidden');
   document.getElementById('pane-summary').classList.remove('hidden');
+  document.getElementById('summary-bar').classList.add('hidden');
   // Hide inner tabs, show nothing active
   document.querySelectorAll('.inner-tab').forEach(t=>t.classList.remove('active'));
   renderSummary();
@@ -273,6 +274,7 @@ function buildIndustryNav(){
 function switchIndustry(ind){
   resetSearchUI();
   document.getElementById('pane-summary').classList.add('hidden');
+  document.getElementById('summary-bar').classList.remove('hidden');
   currentIndustry=ind; currentFilter='all';
   document.querySelectorAll('.ind-tab').forEach(t=>t.classList.toggle('active',t.dataset.ind===ind));
   document.querySelectorAll('.filter-btn').forEach(b=>{b.classList.remove('active');if(b.classList.contains('f-all'))b.classList.add('active');});
